@@ -12,7 +12,7 @@ import Checkout from './components/Checkout';
 const App = () => {
   return (
     <BrowserRouter>
-      <div className='h-screen w-full bg-slate-100'>
+      <div className='h-full w-full bg-slate-100'>
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/food' element={<Food/>} />

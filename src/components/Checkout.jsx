@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import TeaLogo from "../assets/tea.jpeg";
 import BreakLogo from "../assets/break.jpg";
 import WaterLogo from "../assets/water.jpeg";
+import { IoIosAdd } from "react-icons/io";
 
 const Checkout = () => {
   const datepickerRef = useRef(null);
@@ -13,7 +14,10 @@ const Checkout = () => {
   useEffect(() => {
     if (datepickerRef.current) {
       // Destroy previous instance if it exists
-      if (fpInstance.current && typeof fpInstance.current.destroy === "function") {
+      if (
+        fpInstance.current &&
+        typeof fpInstance.current.destroy === "function"
+      ) {
         fpInstance.current.destroy();
       }
 
@@ -28,7 +32,15 @@ const Checkout = () => {
             const clearButton = document.createElement("button");
             clearButton.innerHTML = "Clear";
             clearButton.type = "button";
-            clearButton.classList.add("mt-2", "text-red-500", "bg-white", "px-2", "py-1", "rounded-lg", "shadow-lg");
+            clearButton.classList.add(
+              "mt-2",
+              "text-red-500",
+              "bg-white",
+              "px-2",
+              "py-1",
+              "rounded-lg",
+              "shadow-lg"
+            );
             clearButton.addEventListener("click", () => {
               instance.clear(); // Clear the date picker
             });
@@ -40,7 +52,10 @@ const Checkout = () => {
 
     // Cleanup function to destroy flatpickr instance on component unmount
     return () => {
-      if (fpInstance.current && typeof fpInstance.current.destroy === "function") {
+      if (
+        fpInstance.current &&
+        typeof fpInstance.current.destroy === "function"
+      ) {
         fpInstance.current.destroy();
       }
     };
@@ -49,7 +64,7 @@ const Checkout = () => {
   return (
     <div className="h-[100%] w-full py-6 flex flex-col overflow-y-scroll no-scrollbar">
       <h1 className="mx-auto text-5xl font-bold my-5">Checkout</h1>
-      <div className="flex flex-col h-[2100px] py-5 my-2 w-full ">
+      <div className="flex flex-col h-auto py-5 my-2 w-full ">
         <div className="flex flex-col p-5 xs:w-[90%] md:w-[500px] xs:h-auto bg-white border rounded-lg shadow-lg mx-auto my-2">
           <h3 className="text-3xl font-bold my-2">Order Summary</h3>
           <div className="flex flex-col">
@@ -92,32 +107,56 @@ const Checkout = () => {
           <h2 className="text-4xl font-bold ">Often Bought With</h2>
         </div>
         <div className="flex xs:flex-col md:flex-row h-auto py-5 my-2 w-full">
-          <div className="flex flex-col items-center py-2 xs:w-[90%] md:w-[300px] h-[300px] bg-white border rounded-lg shadow-lg mx-auto my-2">
-            <h3 className="text-3xl font-bold my-2 ">Tea</h3>
-            <img
-              src={TeaLogo}
-              className="w-[90%] h-[65%] rounded-lg"
-              alt="food"
-            />
-            <h3 className="text-3xl font-bold my-2 ">$3</h3>
+          <div className="flex flex-col items-center xs:w-[90%] md:w-[300px] h-auto mx-auto my-2">
+            <div className="flex flex-col items-center py-2 w-full h-[330px] bg-white border rounded-lg shadow-lg">
+              <h3 className="text-3xl font-bold my-2 ">Tea</h3>
+              <img
+                src={TeaLogo}
+                className="w-[90%] h-[65%] rounded-lg"
+                alt="food"
+              />
+              <h3 className="text-3xl font-bold my-2 ">$3</h3>
+            </div>
+            <button className="flex items-center mt-4 p-2 bg-blue-500 rounded-lg shadow-lg hover:bg-opacity-80 ">
+              <IoIosAdd color={"white"} size={30} />
+              <span className="text-3xl font-medium text-white">
+                Add to cart
+              </span>
+            </button>
           </div>
-          <div className="flex flex-col items-center py-2 xs:w-[90%] md:w-[300px] h-[300px] bg-white border rounded-lg shadow-lg mx-auto my-2">
-            <h3 className="text-3xl font-bold my-2 ">Break</h3>
-            <img
-              src={BreakLogo}
-              className="w-[90%] h-[65%] rounded-lg"
-              alt="house keeping"
-            />
-            <h3 className="text-3xl font-bold my-2 ">$2</h3>
+          <div className="flex flex-col items-center xs:w-[90%] md:w-[300px] h-auto mx-auto my-2">
+            <div className="flex flex-col items-center py-2 w-full h-[330px] bg-white border rounded-lg shadow-lg">
+              <h3 className="text-3xl font-bold my-2 ">Break</h3>
+              <img
+                src={BreakLogo}
+                className="w-[90%] h-[65%] rounded-lg"
+                alt="house keeping"
+              />
+              <h3 className="text-3xl font-bold my-2 ">$2</h3>
+            </div>
+            <button className="flex items-center mt-4 p-2 bg-blue-500 rounded-lg shadow-lg hover:bg-opacity-80 ">
+              <IoIosAdd color={"white"} size={30} />
+              <span className="text-3xl font-medium text-white">
+                Add to cart
+              </span>
+            </button>
           </div>
-          <div className="flex flex-col items-center py-2 xs:w-[90%] md:w-[300px] h-[300px] bg-white border rounded-lg shadow-lg mx-auto my-2">
-            <h3 className="text-3xl font-bold my-2 ">Water</h3>
-            <img
-              src={WaterLogo}
-              className="w-[90%] h-[65%] rounded-lg"
-              alt="need help"
-            />
-            <h3 className="text-3xl font-bold my-2 ">$1</h3>
+          <div className="flex flex-col items-center xs:w-[90%] md:w-[300px] h-auto mx-auto my-2">
+            <div className="flex flex-col items-center py-2 w-full h-[330px] bg-white border rounded-lg shadow-lg">
+              <h3 className="text-3xl font-bold my-2 ">Water</h3>
+              <img
+                src={WaterLogo}
+                className="w-[90%] h-[65%] rounded-lg"
+                alt="need help"
+              />
+              <h3 className="text-3xl font-bold my-2 ">$1</h3>
+            </div>
+            <button className="flex items-center mt-4 p-2 bg-blue-500 rounded-lg shadow-lg hover:bg-opacity-80 ">
+              <IoIosAdd color={"white"} size={30} />
+              <span className="text-3xl font-medium text-white">
+                Add to cart
+              </span>
+            </button>
           </div>
         </div>
         <form className="flex flex-col p-5 xs:w-[90%] md:w-[500px] xs:h-auto bg-white border rounded-lg shadow-lg mx-auto my-2">
